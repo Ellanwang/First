@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>督查督办</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+	<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">		
+    
+</head>
+
+<body>
+<div class="pop-box" style="display: none;" id="newplan">
+    <div class="pop-txt">
+        <form id="addplanform">
+        <table class="t-table">
+            <tr>
+                <td >
+                    计划名称：
+                </td>
+                <td>
+                    <input id="planName" class="validate[required]" placeholder="请输入计划名称（必填）" type="text" maxlength="20"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    计划时间：
+                </td>
+                <td>
+                    <input type="text" id="starter" placeholder="点击选择时间" class="validate[required]"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:daysCount,isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'ender\');}'})"
+                           style="width: 140px;"/>
+                    <span style="color: #999;">—</span>
+                    <input type="text" id="ender" placeholder="点击选择时间" class="validate[required]"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:daysCount,isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'starter\');}'})"
+                           style="width: 140px;"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    总用时：
+                </td>
+                <td>
+                    <input style="width: 90%;" placeholder="总用时（天），自动计算" disabled id="wasteTime"/> 天
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<div style="display: none" id="plansSpilt" class="pop-box">
+    <div class="pop-txt">
+        <form id="childplanListform">
+        <div class="childplanList">
+        </div>
+        <div class="mgt14">
+            <a id="creatNewChild" class="btn-details" href="#">＋增加计划拆分</a>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png" />
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav"></ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="top-chioce">
+            <div class="chioce-box">
+                <input placeholder="请输入周计划名称" type="text" id="keyword"/>
+            </div>
+            <div class="chioce-box">
+                <span>时间</span>
+                <input type="text" id="startTime" placeholder="点击选择时间"
+                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+                <span style="color: #999;">-</span>
+                <input type="text" id="endTime" placeholder="点击选择时间"
+                       onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+            </div>
+            <!--<div class="chioce-box">-->
+                <!--<span>部门</span>-->
+                <!--<select id="rStatus">-->
+                    <!--<option value="">全部</option>-->
+                    <!--<option value="2">使用</option>-->
+                    <!--<option value="0">空闲</option>-->
+                    <!--<option value="1">已预订</option>-->
+                    <!--<option value="3">故障</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <div class="chioce-box">
+                    <button class="search btn" id="searchBtn">查找</button>
+            </div>
+            <div class="chioce-box"><span class="grey">（默认本周工作计划）</span></div>
+            <div class="chioce-box fr">
+                <button class="btn" id="creatNew">＋新增周计划</button>
+            </div>
+        </div>
+
+        <div class="db-box">
+            <ul class="planShow db clearfix"></ul>
+        </div>
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/jquery.jqplot.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.pieRenderer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.donutRenderer.js"></script>
+<link rel="stylesheet" type="text/css" href="../../javascript/plugins/jquery.jqplot/jquery.jqplot.css"/>
+<script type="text/javascript" src="../../javascript/class/weeklyplan.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        weeklyplan.plans.Initialization();
+    });
+
+    function daysCount() {
+        var ender = $dp.$('ender');
+        var starter = $dp.$('starter');
+        if (ender.value != "" && starter.value != "") {
+            var days = Math.floor((Date.parse(ender.value) - Date.parse(starter.value)) / 1000 / 60 / 60 / 24 + 1);
+            document.getElementById("wasteTime").value = days;
+        } else {
+            if (ender.value == "") {
+                ender.click();
+            }
+            if (starter.value == "") {
+                starter.click();
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

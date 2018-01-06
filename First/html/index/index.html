@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>会议室查看／预定</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		
+	</head>
+
+	<body>
+		<div class="pop-box" id="modifypass" style="display: none;">
+
+			<div class="pop-txt">
+				<table class="t-table">
+					<tr>
+						<td width="20%">
+							旧密码：
+						</td>
+						<td>
+							<input id="oldPass" type="password"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							新密码：
+						</td>
+						<td>
+							<input id="newPass" type="password"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							重复新密码：
+						</td>
+						<td>
+							<input id="rePass" type="password"/>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+		<div class="pop-box" id="message" style="display: none;">
+
+			<ul class="tz-box">
+
+			</ul>
+		</div>
+		<div class="pop-box" id="modifyInfo" style="display: none;">
+			
+				<div class="pop-txt">
+					<table class="t-table">
+						<tr>
+							<td width="14%">
+								用户名：
+							</td>
+							<td>
+								<input id="currName" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								电话：
+							</td>
+							<td>
+								<input id="telephone" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								地址：
+							</td>
+							<td>
+								<input id="address1"/>
+							</td>
+						</tr>
+					</table>
+	
+				</div>
+			
+		</div>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav">
+				
+			</ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div class="chioce-box">
+						<span>楼层</span>
+						<select>
+							<option>1楼</option>
+							<option>2楼</option>
+							<option>3楼</option>
+							<option>4楼</option>
+						</select>
+					</div>
+
+					<div class="chioce-box">
+						<span>人数</span>
+						<select>
+							<option>10人以下</option>
+							<option>10-20</option>
+							<option>20-30</option>
+							<option>30人以上</option>
+						</select>
+					</div>
+
+					<div class="chioce-box">
+						<span>类别</span>
+						<select>
+							<option>一类</option>
+							<option>二类</option>
+							<option>三类</option>
+							<option>四类</option>
+						</select>
+					</div>
+
+					<div class="chioce-box">
+						<span>状态</span>
+						<select>
+							<option>不限</option>
+							<option>未预定</option>
+							<option>三类</option>
+							<option>四类</option>
+						</select>
+					</div>
+
+					<div class="chioce-box">
+						<span>时间</span>
+						<select>
+							<option>2016-9-7 15:00</option>
+							<option>未预定</option>
+							<option>三类</option>
+							<option>四类</option>
+						</select>
+						<span style="color: #999;">-</span>
+						<select>
+							<option>2016-9-7 18:00</option>
+							<option>未预定</option>
+							<option>三类</option>
+							<option>四类</option>
+						</select>
+					</div>
+
+					<div class="chioce-box">
+						<button class="btn">筛选</button>
+					</div>
+				</div>
+
+				<ul class="list-box">
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="red">使用中</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="green">预定</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<ul class="list-one">
+								<li class="num">
+									01
+								</li>
+								<li class="hys">
+									<p>一号会议室</p>
+									3楼301
+								</li>
+								<li class="rl">
+									容量10人
+								</li>
+								<li class="lb">
+									一类
+								</li>
+								<li class="ss">
+									投影仪 演示白板 麦克风 音响 电脑白板
+								</li>
+								<li class="zt">
+									<span class="blue">空闲</span>
+								</li>
+							</ul>
+						</a>
+					</li>
+				</ul>
+
+				<div class="pagenum">
+					<a class="no-click" href="#">上一页 </a>
+					<a href="#">1</a>
+					<strong>2</strong>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<span style="background-color: inherit;" class="ellipsis">...</span>
+					<a href="#">下一页 </a>
+					<span style="background-color: inherit;">共10页/20条 &nbsp;&nbsp;共200条</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/md5.min.js" ></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js" ></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		      reNew.userAlter.Initialization();
+		    });
+		</script>
+	</body>
+
+</html>

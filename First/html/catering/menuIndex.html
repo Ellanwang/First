@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>餐饮管理－客餐预定</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+		<div class="pop-box" style="display: none;" id="foodOrder">
+			<form id="orderNum">
+			<div class="pop-txt">
+				<p>当前您的客餐人数为<span id="preNum">0</span>人</p>
+				<table class="t-table">
+					<tr>
+						<td width="18%">
+							客餐人数：
+						</td>
+						<td>
+							<input id="bookNo" placeholder="请输入客餐人数" maxlength="2" class="validate[required, custom[Integer0]]"/>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			</form>
+		</div>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name">王静怡</span>
+						</a>
+						<div class="personal-box hide">
+							
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav">
+				
+			</ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce clearfix">
+					<div class="hys-txt fl">
+						<p><h2 id="dateTime"></h2></p>
+						<p id="todayOrder"></p>
+					</div>
+					<div class="fr btn-san">
+						<button class="btn" id="history-btn">查看历史菜单</button>
+					</div>
+				</div>
+
+				<div class="table-div">
+					<table class="table-list table-box" id="dataTable"></table>
+					<ul class="dc-box clearfix">
+						<li>
+							<div class="clearfix dc">
+								<div class="dc-txt">
+									<i class="icon-dc"></i>
+									<span id="personBook"></span>
+								</div>
+								<button class="btn btn-dc" id="guestOrder">开始订餐</button>
+							</div>
+						</li>
+						<li>
+							<div class="clearfix dc">
+								<div class="dc-txt">
+									<i class="icon-dc"></i>
+									<span id="guestTotal"></span>
+								</div>
+								<button class="btn btn-dc" id="startOrder">开始订餐</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/catering.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		       catering.menuIndex.Initialization();
+		       window.alert=function(){}
+		    });
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>会议室管理</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+		<div id="meeting_add" class="pop-box" style="display: none;">
+			<form class="meeting-form">
+			<div class="pop-txt">
+				<table class="t-table">
+					<tr>
+						<td width="18%">
+							编号：
+						</td>
+						<td>
+							<input type="text" maxlength="8" class="validate[required,custom[positiveInteger]]" id="number" />
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							名称：
+						</td>
+						<td>
+							<input type="text"  maxlength="20" class="validate[required]" id="name" />
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							分类：
+						</td>
+						<td>
+							<select id="types" class="types">
+							</select>
+						</td>
+					</tr>
+					<tr class="pos">
+						<td width="18%">
+							位置：
+						</td>
+						<td>
+							<input type="text" class="validate[required,custom[positiveInteger]]" maxlength="2" id="floor" /> 楼
+							<input type="text" class="validate[required,custom[positiveInteger]]" maxlength="6" id="room" /> 室
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							容纳人数：
+						</td>
+						<td>
+							<input type="text" class="validate[required,custom[positiveInteger]]" maxlength="5" id="personnum" />
+						</td>
+					</tr>
+					<tr class="pro">
+						<td width="18%">
+							设备：
+						</td>
+						<td class="equips">
+						</td>
+					</tr>
+				</table>
+			</div>
+			</form>
+		</div>
+
+		<div id="types_add" class="pop-box" style="display: none;">
+			<form class="types-form">
+			<div class="pop-txt">
+				<table class="t-table">
+					<tr>
+						<td width="20%">
+							类型名称：
+						</td>
+						<td>
+							<input type="text" name="typename" placeholder="请输入类型名称" maxlength="20" id="typename" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			</form>
+		</div>
+
+		<div id="equips_add" class="pop-box" style="display: none;">
+			<form class="equips-form">
+			<div class="pop-txt">
+				<table class="t-table">
+					<tr>
+						<td width="20%">
+							设备名称：
+						</td>
+						<td>
+							<input type="text" name="equipname" placeholder="请输入设备名称" maxlength="20" id="equipname" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			</form>
+		</div>
+
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav"></ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div class="chioce-box choice-box-1 clearfix">
+						<div class="fl">
+							<span>会议室类型</span>
+							<div class="types-ck class-box">
+							</div>
+						</div>
+						<div class="btns-cz">
+							<a id="types_add_a" href="#">
+								<i class="icon-add"></i>
+								<span>添加</span>
+							</a>
+							<a id="types_edit_a" href="#">
+								<i class="icon-bianji"></i>
+								<span>修改</span>
+							</a>
+							<a id="types_delete_a" href="#">
+								<i class="icon-delate"></i>
+								<span class="delate-txt">删除</span>
+							</a>
+						</div>
+					</div>
+					<div class="chioce-box choice-box-1 clearfix">
+						<div class="fl">
+							<span>会议室设备</span>
+							<div class="equips-ck class-box">
+							</div>
+						</div>
+						<div class="btns-cz">
+							<a id="equips_add_a" href="#">
+								<i class="icon-add"></i>
+								<span>添加</span>
+							</a>
+							<a id="equips_edit_a" href="#">
+								<i class="icon-bianji"></i>
+								<span>修改</span>
+							</a>
+							<a id="equips_delete_a" href="#">
+								<i class="icon-delate"></i>
+								<span class="delate-txt">删除</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<ul class="list-box">
+					<li>
+						<button class="btn">新增会议室</button>
+					</li>
+				</ul>
+				<ul class="data-list list-box">
+				</ul>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/Validform_v5.3.2_min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/meeting.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				meeting.manage.Initialization();
+			});
+		</script>
+	</body>
+
+</html>

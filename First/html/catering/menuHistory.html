@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>历史菜单</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">		
+	</head>
+
+	<body>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name">王静怡</span>
+						</a>
+						<div class="personal-box hide">
+							
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav">
+				
+			</ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="cur-page-txt">
+					<a href="#">菜单／订餐</a>
+					>
+					<span>历史菜单</span>
+				</div>
+
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<span>时间</span>
+							
+							<input placeholder="请选择时间" id="date" type="text" onclick="WdatePicker({isShowClear:true, readOnly:true, minDate:'%y-%M-01',maxDate:'%y-%M-%ld'})" style="width:132px;background-color: #f4f4f4; height: 25px; border: 1px solid #D9D9D9;"/>
+						</div>
+						
+						<div class="chioce-box">
+							<input id="dishName" placeholder="请输入菜名" maxlength="10"/>
+						</div>
+
+						<div class="chioce-box">
+							<button class="btn">查找</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="table-div">
+					<table class="table-box" id="historyTab">
+						
+					</table>
+				</div>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/catering.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		       // meeting.view_book.Initialization();
+		      catering.historyMenu.Initialization();
+		    });
+		</script>
+	</body>
+
+</html>

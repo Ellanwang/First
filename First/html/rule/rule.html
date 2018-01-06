@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>制度管理</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+		
+	</head>
+
+	<body>
+    <!--添加类型弹框-->
+<div id="types_add" class="pop-box" style="display: none;">
+    <form class="types-form">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="20%">
+                    	公司名称：
+                    </td>
+                    <td>
+                        <input type="text" name="typename" class="validate[required, maxSize[10]]" placeholder="请输入公司名称" maxlength="10" id="typename" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+	<div class="pop-box" style="display: none;" id="submit-file">
+			<form id="upload">
+			<div class="pop-txt">
+				<p class="gy-txt">①上传文件<span>（①上传文件 ②制度信息）</span></p>
+				<table class="t-table">
+					
+					<tr>
+						<td width="18%">
+							上传文件：
+						</td>
+						<td>
+							<input type="file" name="multipartFile" id="multipartFile" class="validate[required]"/>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			</form>
+		</div>
+		<div class="pop-box" style="display: none;" id="file-detail">
+			<form id="uploadrule">
+			<div class="pop-txt">
+				<p class="gy-txt">②制度信息<span>（①上传文件 ②制度信息）</span></p>
+				<table class="t-table">
+					<tr>
+						<td width="18%">
+							所属公司：
+						</td>
+						<td>
+							<!--<input type="text" id="department"/>-->
+							<select name="company" id="companyList">
+								
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							发布部门：
+						</td>
+						<td>
+							<!--<input type="text" id="department"/>-->
+							<select name="department" id="department">
+								
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="18%">
+							发布时间：
+						</td>
+						<td>
+							<!--<input placeholder="请选择发布时间" id="updateTime" type="text" onfocus="WdatePicker({minDate:'%y-%M-#{%d}'})" onclick="WdatePicker({dateFmt:'yyyy-MM-dd hh:mm:ss', isShowClear:true, readOnly:false})"/>-->
+							 <input type="text" id="updateTime" placeholder="请选择发布时间(必选)" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,minDate:'%y-%M-#{%d}'})" class="validate[required]"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							文章标题：
+						</td>
+						<td>
+							<input type="text" id="title" placeholder="请输入文章标题(不超过12字符长度)" class="validate[required, maxSize[12]]"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			</form>
+		</div>
+		<div class="pop-box" style="display: none;" id="submit-file1">
+			<form id="modifytitle">
+			<div class="pop-txt">
+				<p class="gy-txt">修改制度标题</p>
+				<table class="t-table">
+					
+					<tr>
+						<td width="18%">
+							文件名：
+						</td>
+						<td>
+							<input type="text" name="folder" id="modifyFile" class="validate[required, maxSize[12]]" placeholder="请输入文章标题(不超过12字符长度)"/>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			</form>
+		</div>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name">王静怡</span>
+						</a>
+						<div class="personal-box hide">
+							
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav">
+				
+			</ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div class="chioce-box choice-box-1 clearfix border-b">
+		                    <div class="fl">
+		                        <span>制度分类：</span>
+		                        <div class="class-box" id="company_type_list">
+		                        </div>
+		                    </div>
+		                    <div class="btns-cz">
+		                        <a href="#" id="typeAdd">
+		                            <i class="icon-add"></i>
+		                            <span>添加</span>
+		                        </a>
+		                        <a href="#" id="typeDetail">
+		                            <i class="icon-bianji"></i>
+		                            <span>修改</span>
+		                        </a>
+		                        <a href="#" id="typeDel">
+		                            <i class="icon-delate"></i>
+		                            <span class="delate-txt">删除</span>
+		                        </a>
+		                    </div>
+               			</div>
+					<div class="chioce-box">
+						<select id="companySort">
+						</select>
+						<button class="btn" id="search">查找</button>
+						<button class="btn" id="submit-btn">上传</button>
+					</div>
+				</div>
+				<ul class="list-box list-box-2" id="list-box-show">
+				</ul>
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/rule.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		      rules.ruleIndex.Initialization();
+		    });
+		</script>
+		<script type="text/javascript">
+			//var table = $('')
+		</script>
+	</body>
+
+</html>

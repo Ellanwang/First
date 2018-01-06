@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>保险详情</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+</head>
+
+<body>
+<div class="pop-box" id="carsInsurance_add" style="display: none;">
+    <div class="pop-txt">
+        <p class="gy-txt">① 保险概要<span>（① 保险概要 ② 保险项目）</span></p>
+        <form id="addInsuranceform">
+        <table class="t-table">
+            <tr>
+                <td width="23%">
+                    保险年度：
+                </td>
+                <td>
+                    <input type="text" id="innum" class="validate[required,custom[positiveInteger]]" placeholder="请输入保险年度，例如：2017" maxlength="6"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    保险日期：
+                </td>
+                <td>
+                    <input type="text" id="insuranceTime" class="validate[required]" placeholder="点击选择保险日期"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'nextInsuranceTime\');}'})"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    下次保险日期：
+                </td>
+                <td>
+                    <input type="text" id="nextInsuranceTime" class="validate[required]" placeholder="点击选择下次保险日期"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'insuranceTime\');}'})"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<div class="pop-box" id="InsuranceItem_add" style="display: none;">
+    <div class="pop-txt">
+        <p class="gy-txt">② 保险项目<span>（① 保险概要 ② 保险项目）</span></p>
+        <ul class="xianzhong">
+            <li>
+                <form id="InsuranceItemfrom">
+                <input placeholder="保险项目" class="validate[required]" type="text" maxlength="10" id="Item"/>
+                <input placeholder="保险金额(正整数)" class="validate[required,custom[positiveInteger]]" type="text" maxlength="9" id="money"/>
+                </form>
+                <button class="btn addItem">新增</button>
+            </li>
+        </ul>
+        <ul class="xian-classes"></ul>
+    </div>
+</div>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png" />
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav"></ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="cur-page-txt">
+            <a href="#">保险管理</a>
+            >
+            <span></span>
+        </div>
+
+        <div class="top-chioce">
+            <div>
+                <div class="chioce-box">
+                    <span>时间</span>
+                    <input type="text" id="startTime" placeholder="点击选择时间"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+                    <span style="color: #999;">-</span>
+                    <input type="text" id="endTime" placeholder="点击选择时间"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+                </div>
+
+                <div class="chioce-box">
+                    <button class="search btn">查看</button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-box">
+            <li>
+                <button class="addInsurance btn">新增保险信息</button>
+            </li>
+        </ul>
+        <ul class="Insurance-list list-box">
+        </ul>
+
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/cars.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        cars.singleCarInsurance.Initialization();
+    });
+</script>
+</body>
+
+</html>

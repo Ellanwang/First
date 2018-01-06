@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>管理－角色管理</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+</head>
+
+<body>
+<!--更改弹框-->
+
+    <div class="pop-box" style="display: none" id="SystemRole">
+        <div class="pop-txt">
+            <form class="role_form">
+            <div style="width:100%;max-height:245px; overflow:auto;">
+                <table class="singleRole t-table">
+                </table>
+            </div>
+            </form>
+        </div>
+    </div>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="table-div" style="width: 1000px; margin: 20px auto 0;">
+            <div>
+                <button class="btn role">添加角色</button>
+            </div>
+            <table class="table-box mgt15" id="role">
+            </table>
+        </div>
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/admin.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        admin.role.Initialization();
+    });
+</script>
+</html>

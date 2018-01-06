@@ -1,0 +1,42 @@
+﻿(c) Copyright 2017 XianGuan.HU. All Rights Reserved. 
+2017-10-10
+本目录主题分为以下4部分
+
+注意：每个目录下存在新增文件说明，如新增，请备注好文件用途
+
+┌----主目录
+|
+|
+|
+|----css ：样式文件
+|
+|
+|
+|----html：html静态文件（按照功能分类增加）
+|   |----cars:车辆管理静态页
+|   |----meeting:会议室管理静态页
+| 
+|
+|
+|----images：图片资源文件
+|
+|
+| 
+|----javascript
+|    |----class:以各模块功能分类的脚本文件 ，例如,meeting.js（class 文件夹下存储的是根据模块功能划分的模块调用类）
+|    |
+|    |
+|    |----common:各模块引用的公共文件
+|    |    |----personal.js，个人信息接口类
+|    |    |----webserver.js，服务器请求类
+|    |    |----pagination.js，分页公共类
+|    |    |----common.js ，公用函数库
+|    |
+|    |
+|    |
+|    |---plugins:外部引入的脚本插件，例如，js.cookie.js
+|        |----jqueryPagination，分页插件
+|        |----layer，弹框提示插件
+|        |----My97DatePicker，时间选择插件
+|        |----jquery-1.7.2.min.js，jq库
+|        |----js.cookie.js ，cookie操作插件

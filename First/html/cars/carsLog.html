@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>车辆使用详情</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+	</head>
+
+	<body>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav"></ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="cur-page-txt">
+					<a href="#">使用统计</a>
+					>
+					<span></span>
+				</div>
+
+				<div class="top-chioce">
+					<div class="hys-txt">
+						<h2></h2>
+						<p></p>
+					</div>
+					<div>
+						<div class="chioce-box">
+							<span>时间</span>
+							<input type="text" id="startTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+							<span style="color: #999;">-</span>
+							<input type="text" id="endTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+						</div>
+
+						<div class="chioce-box">
+							<button class="search btn">查看</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="table-div">
+					<table class="carsLogList table-box">
+						
+					</table>
+				</div>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/cars.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function () {
+                cars.carsLog.Initialization();
+            });
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>固定资产管理</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+    <script type="text/javascript" src="../../javascript/plugins/baiduTemplate.js"></script>
+</head>
+
+<body>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="top-chioce">
+            <div class="chioce-box choice-box-1 clearfix border-b">
+                <div class="fl">
+                    <span>固定资产类型</span>
+                    <div class="class-box" id="asset_type_list">
+                    </div>
+                </div>
+                <div class="btns-cz">
+                    <a href="#" id="typeAdd">
+                        <i class="icon-add"></i>
+                        <span>添加</span>
+                    </a>
+                    <a href="#" id="typeDetail">
+                        <i class="icon-bianji"></i>
+                        <span>修改</span>
+                    </a>
+                    <a href="#" id="typeDel">
+                        <i class="icon-delate"></i>
+                        <span class="delate-txt">删除</span>
+                    </a>
+                </div>
+            </div>
+            <div class="chioce-box choice-box-1 clearfix mgt14">
+                <div class="fl">
+                    <select id="typeId">
+                        <option value=""></option>
+                    </select>
+                    <select id="deptId">
+                        <option value=""></option>
+                    </select>
+                    <input placeholder="请输入要查找的物品" id="search-value" maxlength="10"/>
+                    <button class="btn search">查找</button>
+                </div>
+                <div class="btns-cz add-zc-btn">
+                    <button class="btn">＋新增</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-div">
+            <table class="table-box table-data-list">
+            </table>
+        </div>
+
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+
+<!--新增-->
+<div class="pop-box" style="display: none" id="add-zc">
+    <form id="assetGuan_form">
+        <div class="pop-txt">
+            <table class="t-table" id="goods_asset">
+                <tr>
+                    <td width="18%">物品编号：</td>
+                    <td><input type="text" maxlength="20" placeholder="请输入物品编号" id="goodsId"
+                               class="validate[required,custom[onlyLetterNumber]]"></td>
+                </tr>
+                <tr>
+                    <td>分类：</td>
+                    <td><select class="validate[required]" id="type_id"></select></td>
+                </tr>
+                <tr>
+                    <td>部门：</td>
+                    <td><select class="validate[required]" id="dept"></select></td>
+                </tr>
+                <tr>
+                    <td>名称：</td>
+                    <td><input type="text" maxlength="10" id="name" placeholder="请输入物品名称" class="validate[required]">
+                    </td>
+                </tr>
+                <tr>
+                    <td>价格：</td>
+                    <td><input type="text" id="price" maxlength="7" class="validate[required,min[0]]custom[number]]"
+                               placeholder="请输入物品价格"></td>
+                </tr>
+                <tr>
+                    <td>位置：</td>
+                    <td><input type="text" id="weizhi" maxlength="7" class="validate[required]" placeholder="请输入物品位置">
+                    </td>
+                </tr>
+                <tr>
+                    <td>数量：</td>
+                    <td><input type="text" maxlength="6" class="validate[required,custom[positiveInteger]]" id="number"
+                               placeholder="请输入物品数量"></td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</div>
+
+
+<!--删除-->
+<div class="pop-box" style="display: none" id="del-zc">
+    <div class="pop-txt">
+        <table class="t-table">
+
+        </table>
+    </div>
+</div>
+
+<!--修改-->
+<div class="pop-box" style="display: none" id="det-zc">
+    <div class="pop-txt">
+        <form class="assetsDetail">
+            <table class="t-table" id="goods_detail_pop">
+                <tr>
+                    <td width="18%">物品编号：</td>
+                    <td><input type="text" maxlength="20" class="validate[required, custom[onlyLetterNumber]]"
+                               id="good_no"></td>
+                </tr>
+                <tr>
+                    <td>分类：</td>
+                    <td><select id="type1" class="validate[required]"></select></td>
+                </tr>
+                <tr>
+                    <td>部门：</td>
+                    <td><select id="dept1" class="validate[required]"></select></td>
+                </tr>
+                <tr>
+                    <td>名称：</td>
+                    <td><input type="text" maxlength="10" id="assName" class="validate[required]"></td>
+                </tr>
+                <tr>
+                    <td>价格：</td>
+                    <td><input type="text" maxlength="7" id="assPrice" class="validate[required,min[0]]custom[number]">
+                    </td>
+                </tr>
+                <tr>
+                    <td>位置：</td>
+                    <td><input type="text" maxlength="8" class="validate[required]" id="assWeizhi"></td>
+                </tr>
+                <tr>
+                    <td>数量：</td>
+                    <td><input type="text" maxlength="7" class="validate[required,custom[positiveInteger]]"
+                               id="assNumber"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<!--报废弹窗-->
+<div class="pop-box" style="display: none" id="goodsBF">
+    <div class="pop-txt">
+        <form class="assetBF">
+            <table class="t-table" id="table-pop">
+                <tr>
+                    <td width="18%">物品编号：</td>
+                    <td id="goo_No"></td>
+                    <td id="asset_id" style="display: none"></td>
+                </tr>
+                <tr>
+                    <td>申报人：</td>
+                    <td id="goods_name"></td>
+                    <td id="asset_usid" style="display: none"></td>
+                </tr>
+                <tr>
+                    <td>申报部门：</td>
+                    <td id="good_det_dept"></td>
+                    <td id="asset_deId" style="display: none"></td>
+                </tr>
+                <tr>
+                    <td>类型：</td>
+                    <td id="goods_type_id"></td>
+                </tr>
+                <tr>
+                    <td>名称：</td>
+                    <td id="names"></td>
+                </tr>
+                <tr>
+                    <td>位置：</td>
+                    <td id="position">室</td>
+                </tr>
+                <tr>
+                    <td>报废数量：</td>
+                    <td><input type="text" maxlength="5" id="num" class="validate[required,custom[positiveInteger]]"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>报废理由：</td>
+                    <td><textarea id="reason" maxlength="50" placeholder="请输入报废的理由"
+                                  class="validate[required]"></textarea></td>
+                </tr>
+                <tr>
+                    <td>审核人：</td>
+                    <td>
+                        <select style="width: 31%;" class="validate[required] user_Id2" id="a"></select>
+                        <select style="width: 31%;" class="user_Id2" id="b"></select>
+                        <select style="width: 31%;" class="user_Id2" id="c"></select>
+                    </td>
+                </tr>
+            </table>
+
+            <hr class="line"/>
+            <table class="t-table">
+                <tr>
+                    <td>申报时间:</td>
+                    <td>
+                        <input type="text" id="startTime" placeholder="点击选择时间"
+                               onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true})"
+                               class="validate[required]"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<!--添加类型弹框-->
+<div id="types_add" class="pop-box" style="display: none;">
+    <form class="types-form">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="20%">
+                        类型名称：
+                    </td>
+                    <td>
+                        <input type="text" name="typename" placeholder="请输入类型名称" class="validate[required, maxSize[10]]"
+                               maxlength="10" id="typename"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/goods.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        goods.assetGuanli.Initialization();
+    });
+</script>
+</html>

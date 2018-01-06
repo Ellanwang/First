@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>管理－部门管理</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+    <script type="text/javascript" src="../../javascript/plugins/baiduTemplate.js"></script>
+</head>
+
+<body>
+<div class="pop-box" id="add_dept_pop" style="display: none">
+    <form class="types-form">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="18%">
+                        部门名称：
+                    </td>
+                    <td>
+                        <input id="dept_name" class="validate[required, maxSize[10]]"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<div class="pop-box" id="change_dept_pop" style="display: none">
+    <form class="depts-form">
+        <div class="pop-txt">
+            <table class="t-table" id="dept_detail">
+
+            </table>
+        </div>
+    </form>
+</div>
+
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="table-div">
+            <div style="width: 800px; margin: 0 auto;">
+                <button class="btn" id="addDept">＋新增部门</button>
+            </div>
+            <table class="table-box mgt15" id="bumen" style="width: 800px; margin: 15px auto 0;">
+                <tr>
+                    <th width="10%">部门ID</th>
+                    <th width="10%">部门名称</th>
+                    <th width="10%">操作</th>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/admin.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        admin.department.Initialization();
+    });
+</script>
+</html>

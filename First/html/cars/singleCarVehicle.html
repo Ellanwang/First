@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>保养详情</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet"
+			  href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+
+	<div id="Vehicle_add" class="pop-box" style="display: none" >
+		<div class="pop-txt">
+			<p class="gy-txt"> ① 保养概要<span>( ① 保养概要 ② 保养项目 )</span></p>
+			<form id="addCarVehicleform">
+			<table class="t-table">
+				<tbody>
+				<tr>
+					<td width="26%">
+						保养次数：
+					</td>
+					<td>
+						<input type="text" placeholder="保养次数" id="num" class="validate[required,custom[positiveInteger]]" maxlength="6" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						保养日期：
+					</td>
+					<td>
+						<input type="text" id="VehicleTime" placeholder="点击选择保养日期" class="validate[required]"
+							   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'nextVehicleTime\');}'})"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						下次保养日期：
+					</td>
+					<td>
+						<input type="text" id="nextVehicleTime" placeholder="点击选择下次保养日期" class="validate[required]"
+							   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'VehicleTime\');}'})"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						保养公里数：
+					</td>
+					<td>
+						<input type="text" placeholder="保养公里数(km)" id="maintenanceKM" class="validate[required,custom[positiveInteger]]" maxlength="6">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						下次保养公里数：
+					</td>
+					<td>
+						<input type="text" placeholder="下次保养公里数(km)" id="nextMaintenanceKM" class="validate[required,custom[positiveInteger]]" maxlength="6">
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+
+	<div id="VehicleItem_add" class="pop-box" style="display: none">
+		<div class="pop-txt b-t">
+			<p class="gy-txt"> ② 保养项目</p>
+			<ul class="xianzhong">
+				<li>
+					<form id="VehicleItemfrom">
+					<input type="text" id="Item" maxlength="10" class="validate[required]" placeholder="保养项目" />
+					<input type="text" id="money" maxlength="9" class="validate[required,custom[positiveInteger]]" placeholder="保养金额(正整数)" />
+					</form>
+					<button class="btn addItem">新增</button>
+				</li>
+			</ul>
+			<ul class="xian-classes"></ul>
+		</div>
+	</div>
+
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	<div class="left-box">
+		<ul class="left-nav"></ul>
+	</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="cur-page-txt">
+					<a href="#">保养管理</a>
+					>
+					<span>01号车辆保养信息详情</span>
+				</div>
+
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<span>时间</span>
+							<input type="text" id="startTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+							<span style="color: #999;">-</span>
+							<input type="text" id="endTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+						</div>
+
+						<div class="chioce-box">
+							<button class="search btn">查看</button>
+						</div>
+					</div>
+				</div>
+				<ul class="list-box">
+					<li>
+						<button class="addVehicle btn">新增保养信息</button>
+					</li>
+				</ul>
+				<ul class="vehicle-list list-box"></ul>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+	<script type="text/javascript"
+			src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript"
+			src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+	<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/class/cars.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            cars.singleCarVehicle.Initialization();
+        });
+	</script>
+	</body>
+
+</html>

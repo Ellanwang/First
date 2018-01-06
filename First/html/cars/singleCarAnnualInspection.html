@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>年检详情－新增</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet"
+			  href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+		<div id="addAnnualInspection" style="display:none" class="pop-box">
+			<div class="pop-txt">
+				<form id="addAnnualInspectionform">
+				<table class="t-table">
+					<tr>
+						<td width="24%">
+							年检年度：
+						</td>
+						<td>
+							<input type="text" id="number" class="validate[required,custom[positiveInteger]]" placeholder="请输入年检年度，例如：2017" maxlength="5" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							年检日期：
+						</td>
+						<td>
+							<input type="text" id="thisTime" placeholder="点击选择年检日期" class="validate[required]"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'nextTime\');}'})"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							下次年检日期：
+						</td>
+						<td>
+							<input type="text" id="nextTime" placeholder="点击选择下次年检日期" class="validate[required]"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'thisTime\');}'})"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="18%">
+							本年度年检费用：
+						</td>
+						<td>
+							<input type="text" id="totalFee" placeholder="请输入本年度年检费用（元）"  class="validate[required,custom[positiveInteger]]" maxlength="8" />
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div>
+		</div>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav"></ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="cur-page-txt">
+					<a href="#">年检管理</a>><span></span>
+				</div>
+
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<span>时间</span>
+							<input type="text" id="startTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+							<span style="color: #999;">-</span>
+							<input type="text" id="endTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+						</div>
+
+						<div class="chioce-box">
+							<button class="search btn">查看</button>
+						</div>
+					</div>
+				</div>
+
+				<ul class="list-box">
+					<li>
+						<button class="addInspection btn">新增年检信息</button>
+					</li>
+				</ul>
+
+				<ul class="AnnualInspection-list list-box"></ul>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript"
+				src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript"
+				src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/cars.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function () {
+                cars.singleCarAnnualInspection.Initialization();
+            });
+		</script>
+	</body>
+
+</html>

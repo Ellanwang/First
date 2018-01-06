@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>我的－用车</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+
+	<div class="pop-box" id="carsOrder" style="display: none">
+		<div class="pop-txt">
+			<form id="editmyordercar">
+			<table class="t-table">
+				<tr>
+					<td width="18%">
+						预定人：
+					</td>
+					<td class="orderUserName">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预定时间：
+					</td>
+					<td class="orderDate">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						使用时间：
+					</td>
+					<td class="use-time">
+						<input type="text" placeholder="点击选择时间" style="width:42%" id="carStartTime" class="validate[required]"
+							   onclick="WdatePicker({isShowClear:true,dateFmt:'HH:mm',readOnly:true,minDate:'06:00',maxDate:'#F{$dp.$D(\'carEndTime\',{m:-10})|| \'20:00\'}'})"/>
+						至
+						<input type="text" placeholder="点击选择时间" style="width:43%" id="carEndTime" class="validate[required]"
+							   onclick="WdatePicker({isShowClear:true,dateFmt:'HH:mm',readOnly:true,maxDate:'20:00',minDate:'#F{$dp.$D(\'carStartTime\',{m:10})|| \'6:00\'}'})"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						司机信息：
+						<input id="driverId"  class="validate[required]" type="hidden" />
+					</td>
+					<td class="driverInfo">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						出发地：
+					</td>
+					<td>
+						<input id="order_departure"  class="validate[required]" maxlength="20" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						目的地：
+					</td>
+					<td>
+						<input id="order_destination"  class="validate[required]" maxlength="20" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						使用原因：
+					</td>
+					<td>
+						<input id="order_reason"  class="validate[required]" maxlength="50" type="text" />
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</div>
+
+	<div class="pop-box"  id="carsOrderConfirm" style="display: none">
+		<div class="pop-txt">
+			<table class="t-table t-table-n">
+				<tr>
+					<td width="20%">
+						预定人：
+					</td>
+					<td class="qr-orderName">
+
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预定时间：
+					</td>
+					<td class="qr-orderDate">
+
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						使用时间：
+					</td>
+					<td class="qr-orderTime">
+
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						出发地：
+					</td>
+					<td class="qr-departure">
+
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						目的地：
+					</td>
+					<td class="qr-destination">
+
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						使用原因：
+					</td>
+					<td class="qr-reason">
+
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="pop-box" id="carsOrderCancel" style="display: none">
+		<div class="pop-txt">
+			<form id="carsOrderform">
+			<table class="t-table">
+				<tr>
+					<td width="18%">
+						预定用户：
+					</td>
+					<td class="qxyd-orderUser">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预定时间：
+					</td>
+					<td class="qxyd-orderDate">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						使用时间：
+					</td>
+					<td class="qxyd-orderTime">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						取消原因：
+					</td>
+					<td>
+						<select id="qxyd_reason">
+							<option>紧急使用车辆</option>
+							<option>故障</option>
+							<option>重复预定</option>
+							<option>其他</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						其他备注：
+					</td>
+					<td>
+						<textarea maxlength="100" id="qxyd_mark"></textarea>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</div>
+
+
+	<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav"></ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<span>时间</span>
+							<input type="text" id="startTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+							<span style="color: #999;">-</span>
+							<input type="text" id="endTime" placeholder="点击选择时间"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+						</div>
+
+						<div class="chioce-box">
+							<button class="btn search">查找</button>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<ul class="my-box"></ul>
+				</div>
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/class/my.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function () {
+                my.cars.Initialization();
+            });
+		</script>
+	</body>
+
+</html>

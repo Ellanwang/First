@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>督查督办－统计</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">		
+		
+	</head>
+
+	<body>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="left-box">
+			<ul class="left-nav">
+				
+			</ul>
+		</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div class="chioce-box">
+						<span>时间</span>
+						<input type="text" id="startTime" placeholder="点击选择时间"
+							   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'endTime\');}'})"/>
+						<span style="color: #999;">-</span>
+						<input type="text" id="endTime" placeholder="点击选择时间"
+							   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+					</div>
+
+					<div class="chioce-box">
+						<button class="btn search">查找</button>
+					</div>
+				</div>
+
+				<div class="db-tj">
+					<h2>总任务完成情况</h2>
+					<div id="pieChart" style="height: 350px;width:100%;margin-top: 30px;">
+						<table class="table-box">
+							<tr>
+								<th></th>
+								<th>总数</th>
+								<th>未完成</th>
+								<th>已完成</th>
+							</tr>
+							<tr class="creattasks">
+								<td style="width:25%;text-align: right">您创建的任务：</td>
+								<td style="width:25%;" class="statisticsfont grey all"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont red no"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont green yes"><span class="lightGrey">正在读取...</span></td>
+							</tr>
+							<tr class="accepttasks">
+								<td style="width:25%;text-align: right">您完成的任务：</td>
+								<td style="width:25%;" class="statisticsfont grey all"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont red no"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont green yes"><span class="lightGrey">正在读取...</span></td>
+							</tr>
+							<tr class="weekplans">
+								<td style="width:25%;text-align: right">您提交的周工作计划：</td>
+								<td style="width:25%;" class="statisticsfont grey all"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont red no"><span class="lightGrey">正在读取...</span></td>
+								<td style="width:25%;" class="statisticsfont green yes"><span class="lightGrey">正在读取...</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+		<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+		<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/jquery.jqplot.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.pieRenderer.js"></script>
+		<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.donutRenderer.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../javascript/plugins/jquery.jqplot/jquery.jqplot.css" />
+		<script type="text/javascript" src="../../javascript/class/supervise.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		      supervise.statistics.Initialization();
+		    });
+		</script>
+	</body>
+
+</html>

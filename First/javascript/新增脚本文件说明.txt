@@ -1,0 +1,8 @@
+(c) Copyright 2017 XianGuan.HU. All Rights Reserved. 
+2017-10-10
+
+1.plugins 文件夹下新引入 js.cookie.js 文件，用于操作客户端cookies
+2.common 文件夹下新增 personal.js 和 webserver.js ，分别为操作用户信息 和 与服务器交互的公共类,common.js公用函数库
+3.class 文件夹下新增会议室公用类meeting.js
+4.引入比较稳定得jquery-1.7.2.min.js，同时为了兼容ie6\7\8
+5.jquery.autocomplete  自动补全插件 文档地址： https://github.com/devbridge/jQuery-Autocomplete

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>车辆管理</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+	<div id="car_add" class="pop-box" style="display: none">
+		<div class="pop-txt">
+			<p class="tit-pop">车辆信息</p>
+			<form id="addcarform">
+			<table class="t-table">
+				<tr>
+					<td width="18%">
+						车辆编号：
+					</td>
+					<td>
+						<input type="text" class="validate[required]" maxlength="20" id="num" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						车辆牌号：
+					</td>
+					<td>
+						<input type="text" class="validate[required]" maxlength="20" id="plate" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						车型：
+					</td>
+					<td>
+						<input type="text" class="validate[required]" maxlength="20" id="typev" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						可乘坐：
+					</td>
+					<td>
+						<input type="text" class="validate[required,custom[positiveInteger]]" maxlength="4" id="capacity" />
+					</td>
+				</tr>
+			</table>
+			<p class="tit-pop" style="margin-top: 10px;">驾驶员信息</p>
+			<table class="t-table">
+				<tr>
+					<td width="18%">
+						驾驶人：
+					</td>
+					<td>
+						<div style="position: relative; height: 30px;">
+							<input type="hidden" id="driverNamehid" class="systemUsers validate[required]"/>
+							<input type="text" name="driverName" placeholder="输入存在的用户在动态列表中选择" class="validate[required]"
+								   id="driverName"
+								   style="position: absolute; z-index: 2; background: transparent;"/>
+							<input type="text" name="driverName" id="driverName-list" disabled="disabled"
+								   style="color:#ccc;position: absolute; background: transparent; z-index: 1;"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						联系方式：
+					</td>
+					<td>
+						<input type="text" class="validate[required]" readonly id="driverPhone" />
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</div>
+		<div class="top-box">
+			<div class="pd10 clearfix">
+				<img class="logo" src="../../images/logo.png" />
+				<ul class="top-right">
+					<li>
+						<a href="#">
+							<img class="head-img" src="../../images/pic1.png" />
+							<span class="name"></span>
+						</a>
+						<div class="personal-box hide">
+						</div>
+					</li>
+					<li>
+						<button class="btn-out">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	<div class="left-box">
+		<ul class="left-nav"></ul>
+	</div>
+
+		<div class="right-box">
+			<div class="main">
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<input class="input-search" type="text" id="carNumber" placeholder="请输入车牌号" />
+						</div>
+
+						<div class="chioce-box">
+							<button class= "search btn">搜索</button>
+						</div>
+						<div class="chioce-box">
+							<button class= "add-car btn">新增车辆信息</button>
+						</div>
+					</div>
+				</div>
+
+				<div class=" table-div">
+					<table class="carsList table-box">
+					</table>
+				</div>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jquery.autocomplete.js"></script>
+	<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/class/cars.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            cars.carsManage.Initialization();
+        });
+	</script>
+	</body>
+
+</html>

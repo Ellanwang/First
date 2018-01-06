@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>办公室用品统计-领取</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+
+    <script type="text/javascript" src="../../javascript/plugins/baiduTemplate.js"></script>
+
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+</head>
+<body>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="top-chioce">
+            <div class="choice-two">
+                <a href="wupintongji-ruku.html">入库统计</a>
+                <a class="cur-a" href="wupintongji-lingqu.html">领取统计</a>
+            </div>
+        </div>
+
+        <div class="table-div">
+            <div class="table-search">
+                <div class="chioce-box choice-box-1 clearfix">
+                    <input type="text" id="startTime" placeholder="点击选择时间"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'startTime\');}'})"/>
+                    <select id="typeId">
+                        <option value=""></option>
+                    </select>
+                    <select id="deptId">
+                        <option value=""></option>
+                    </select>
+                    <input placeholder="请输入要查找的物品" id="name" maxlength="10"/>
+                    <button class="btn search">查找</button>
+                </div>
+            </div>
+
+            <ul class="lq-tj clearfix">
+                <li>
+                    <div class="zzt deptList">
+
+                    </div>
+                </li>
+                <li>
+                    <table class="table-box table-data-list">
+                        <tr>
+                            <th width="7%">编号</th>
+                            <th width="10%">分类</th>
+                            <th width="10%">名称</th>
+                            <th width="15%">单价</th>
+                            <th width="7%">数量</th>
+                            <th width="10%">领取部门</th>
+                            <th width="10%">领取人</th>
+                            <th width="15%">采购时间</th>
+                            <th>总计</th>
+                        </tr>
+
+
+                    </table>
+
+                    <div class="all-price"></div>
+
+                    <div class="pagenum">
+                        <div id="pagination" class="page"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/goods.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        goods.goodsReceive.Initialization();
+    });
+</script>
+
+</html>

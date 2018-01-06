@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>预算－个人</title>
+		<link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+		<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+	</head>
+
+	<body>
+	<div id="addbudget" style="display: none" class="pop-box">
+		<div class="pop-txt">
+			<form id="addbudgetform">
+			<table class="t-table">
+				<tr>
+					<td width="18%">
+						提交人：
+					</td>
+					<td id="commitUser">
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预算用途：
+					</td>
+					<td>
+						<input type="text" id="budgetName" maxlength="30" class="validate[required]" />
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预算金额：
+					</td>
+					<td>
+						<input style="width: 88%;" id="budgetMoney" type="text" class="validate[required,custom[positiveInteger]]" /> 元
+					</td>
+				</tr>
+				<tr>
+					<td width="18%">
+						预算时间：
+					</td>
+					<td>
+						<input type="text" id="budget" placeholder="点击选择日期" class="validate[required]"
+							   onclick="WdatePicker({dateFmt:'yyyy-MM',isShowClear:true,readOnly:true})"/>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</div>
+	<div class="top-box">
+		<div class="pd10 clearfix">
+			<img class="logo" src="../../images/logo.png"/>
+			<ul class="top-right">
+				<li>
+					<a href="#">
+						<img class="head-img" src="../../images/pic1.png" />
+						<span class="name"></span>
+					</a>
+					<div class="personal-box hide">
+					</div>
+				</li>
+				<li>
+					<button class="btn-out">退出</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="left-box">
+		<ul class="left-nav"></ul>
+	</div>
+
+		<div class="right-box">
+			<div class="main">
+
+				<div class="top-chioce">
+					<div>
+						<div class="chioce-box">
+							<span>预算日期</span>
+							<input type="text" id="budgetTime" placeholder="点击选择日期"
+												  onclick="WdatePicker({dateFmt:'yyyy-MM',isShowClear:true,readOnly:true})"/>
+						</div>
+
+						<div class="chioce-box">
+							<span>申请进度</span>
+							<select id="checkStatus">
+								<option value="">不限</option>
+								<option value="0">通过</option>
+								<option value="1">未通过</option>
+							</select>
+						</div>
+
+						<div class="chioce-box">
+							<button class="search btn">搜索</button>
+						</div>
+					</div>
+				</div>
+
+				<ul class="list-box">
+					<li>
+						<button class="add btn">提交个人预算</button>
+					</li>
+				</ul>
+				<div class="table-div">
+					<table id="list" class="table-box"></table>
+				</div>
+
+				<div class="pagenum">
+					<div id="pagination" class="page"></div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+	<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+	<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+	<script type="text/javascript" src="../../javascript/class/budget.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            budget.personal.Initialization();
+        });
+	</script>
+	</body>
+
+</html>

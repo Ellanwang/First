@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定资产统计</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+    <script type="text/javascript" src="../../javascript/plugins/baiduTemplate.js"></script>
+</head>
+<body>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="top-chioce">
+            <div class="chioce-box choice-box-1 clearfix">
+                <select id="typeId">
+                    <option value=""></option>
+                </select>
+                <select id="deptId">
+                    <option value=""></option>
+                </select>
+                <input placeholder="请输入要查找的物品" class="inputContent" maxlength="10"/>
+                <button class="btn search">查找</button>
+            </div>
+        </div>
+
+        <div class="table-div">
+            <table class="table-box table-data-list">
+
+            </table>
+            <div class="all-price">总数：7 总价：25340元</div>
+        </div>
+
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/goods.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        goods.AssetStatistics.Initialization();
+    });
+</script>
+</html>

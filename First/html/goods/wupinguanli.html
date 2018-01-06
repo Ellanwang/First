@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>办公室用品管理</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet" href="../../javascript/plugins/jqueryPagination/css/jquery.pagination.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+    <script type="text/javascript" src="../../javascript/plugins/baiduTemplate.js"></script>
+</head>
+<body>
+
+<div class="pop-box" id="goods-pop" style="display: none">
+    <div class="pop-txt">
+        <form class="goods_detail">
+            <table class="t-table" id="pop_det">
+                <tr>
+                    <td width="18%">物品编号：</td>
+                    <td><input style="width: 65%;" id="No" maxlength="20" class="validate[required]"/></td>
+                </tr>
+                <tr>
+                    <td>物品名称：</td>
+                    <td><input type="text" id="goods_name" maxlength="10"/></td>
+                </tr>
+                <tr>
+                    <td>物品分类：</td>
+                    <td><select id="goodsType-pop-id"></select></td>
+                </tr>
+                <tr>
+                    <td>物品价格：</td>
+                    <td><input id="pri" maxlength="7" type="text" class="validate[required,min[0]]]"/></td>
+                </tr>
+                <tr>
+                    <td>物品数量：</td>
+                    <td><input type="text" maxlength="5" class="validate[required,custom[positiveInteger]]" id="n"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png"/>
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav">
+
+    </ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="top-chioce">
+
+            <div class="chioce-box choice-box-1 clearfix border-b">
+                <div class="fl">
+                    <span>物品类型</span>
+                    <div class="class-box" id="goods_type_list">
+                        <input id="class1" type="checkbox"/>一类
+                        <!--<label for="class1">一类</label>-->
+                        <input id="class2" type="checkbox"/>二类
+                        <!--<label for="class2">二类</label>-->
+                        <input id="class3" type="checkbox"/>三类
+                        <!--<label for="class3">三类</label>-->
+                    </div>
+                </div>
+                <div class="btns-cz">
+                    <a href="#" id="typeAdd">
+                        <i class="icon-add"></i>
+                        <span>添加</span>
+                    </a>
+                    <a href="#" id="typeDetail">
+                        <i class="icon-bianji"></i>
+                        <span>修改</span>
+                    </a>
+                    <a href="#" id="typeDel">
+                        <i class="icon-delate"></i>
+                        <span class="delate-txt">删除</span>
+                    </a>
+                </div>
+            </div>
+            <div class="chioce-box choice-box-1 clearfix mgt14">
+                <div class="fl">
+                    <select id="typeId">
+                        <option value=""></option>
+                    </select>
+                    <input placeholder="请输入要查找的物品" maxlength="10" id="goodsNum"/>
+                    <button class="btn search">查找</button>
+                </div>
+                <div class="btns-cz">
+                    <button class="btn ruku">入库</button>
+                    <button class="btn lingqu">领取</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-div">
+            <table class="table-box table-data-list">
+            </table>
+        </div>
+
+        <div class="pagenum">
+            <div id="pagination" class="page"></div>
+        </div>
+    </div>
+</div>
+
+<!--入库弹窗-->
+<div class="pop-box" style="display: none;" id="goods-ruku-pop">
+    <form class="goods_ruku">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="18%">
+                        物品编号：
+                    </td>
+                    <td>
+                        <input style="width: 74%;" id="goodsNo" placeholder="请输入物品的编号" maxlength="20"
+                               class="validate[required]"/>
+                        <!--<a class="sm-txt" href="#">查找</a>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        物品名称：
+                    </td>
+                    <td>
+                        <input id="goodsName" placeholder="请输入物品的名称" maxlength="10" class="validate[required]"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        物品分类：
+                    </td>
+                    <td>
+                        <select id="type_pop">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        物品价格：
+                    </td>
+                    <td>
+                        <input id="goodsPri" placeholder="请输入物品的价格" maxlength="7" class="validate[required,min[0]],custom[number]]"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        物品数量：
+                    </td>
+                    <td>
+                        <input id="goods_Num" placeholder="请输入物品的数量" maxlength="7"
+                               class="validate[required,custom[positiveInteger]]"/>
+                    </td>
+                </tr>
+            </table>
+            <hr class="line"/>
+            <table class="t-table">
+                <tr>
+                    <td width="18%">
+                        采购人：
+                    </td>
+                    <td>
+                        <select id="goods_user">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        采购日期：
+                    </td>
+                    <td>
+                        <input type="text" id="date_goods" placeholder="点击选择时间" class="validate[required]"
+                               onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true})"/>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</div>
+
+<!--领取弹窗-->
+<div class="pop-box" style="display: none" id="goods-lingqu-pop">
+    <form class="goods_lingqu">
+        <div class="pop-txt">
+            <table class="t-table table-goodsNo">
+                <tr>
+                    <td width="18%">物品编号：</td>
+                    <td><input style="width: 65%;" id="mm" placeholder="请输入物品编号查找要领取的物品" maxlength="20"
+                               class="validate[required]"/> <a class="sm-txt search_goods" href="#">查找</a></td>
+                    <td style="display: none" id="gLingqu_id"></td>
+                </tr>
+                <tr>
+                    <td>物品名称：</td>
+                    <td>
+                        <div style="position: relative; height: 30px;">
+                            <input type="hidden" id="hostNamehid"/>
+                            <input type="hidden" id="priceIdhid"/>
+                            <input type="text" name="hostName" placeholder="输入存在的物品名称在动态列表中选择" id="hostName"
+                                   style="position: absolute; z-index: 2; background: transparent;"/>
+                            <input type="text" name="hostName" id="hostName-list" disabled="disabled"
+                                   style="color:#ccc;position: absolute; background: transparent; z-index: 1;"/>
+                        </div>
+                        <!--<a style="margin-top:5px;display: inline-block;height: 20px;" class="sm-txt search_goodsName" href="#">查找</a>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>物品分类：</td>
+                    <td><select disabled id="goodsFen"></select></td>
+                </tr>
+                <tr>
+                    <td>物品价格：</td>
+                    <td>
+                        <select id="wp">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>领取数量：</td>
+                    <td><input maxlength="8" id="aaa"  class="validate[required,custom[positiveInteger]]"/></td>
+                </tr>
+            </table>
+            <hr class="line"/>
+            <table class="t-table">
+                <tr>
+                    <td width="18%">
+                        领取部门：
+                    </td>
+                    <td>
+                        <select id="deptId">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        领取人：
+                    </td>
+                    <td>
+                        <select id="userList">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        领取日期：
+                    </td>
+                    <td>
+                        <input type="text" id="startTime" placeholder="点击选择时间" class="validate[required]"
+                               onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true})"/>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</div>
+
+<!--查找弹窗-->
+<div class="pop-box" style="display: none" id="search-pop">
+
+    <div class="pop-txt">
+        <div class="top-chioce">
+
+            <div class="chioce-box1">
+                <input style="width: 200px;" placeholder="请输入要查找的物品" maxlength="10"/>
+            </div>
+
+            <div class="chioce-box1">
+                <button class="btn search">筛选</button>
+            </div>
+        </div>
+        <div class="table-table-box">
+            <table class="table-table">
+                <tr>
+                    <th>
+                        编号
+                    </th>
+                    <th>
+                        分类
+                    </th>
+                    <th>
+                        名称
+                    </th>
+                    <th>
+                        单价
+                    </th>
+                    <th>
+                        数量
+                    </th>
+                    <th>
+                        合计
+                    </th>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>分类一</td>
+                    <td>电脑</td>
+                    <td>3900元／台</td>
+                    <td>1</td>
+                    <td>3900元</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--添加类型弹框-->
+<div id="types_add" class="pop-box" style="display: none;">
+    <form class="types-form">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="20%">
+                        类型名称：
+                    </td>
+                    <td>
+                        <input type="text" name="typename" class="validate[required, maxSize[10]]" placeholder="请输入类型名称"
+                               maxlength="10" id="typename"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+</body>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../../javascript/class/goods.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        goods.goods.Initialization();
+    });
+</script>
+</html>

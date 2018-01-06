@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>督查督办－总任务分解</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+	<link type="text/css" rel="stylesheet" href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">		
+    
+</head>
+
+<body>
+<div class="pop-box" id="editChildtask" style="display: none">
+    <div class="pop-txt">
+        <form id="editChildtaskform">
+        <table class="childTaskTable t-table">
+            <tbody>
+            <tr>
+                <td >子任务：</td>
+                <td><input id="childtaskName0" class="validate[required]" type="text" maxlength="100"></td>
+            </tr>
+            <tr>
+                <td>负责人：</td>
+                <td>
+                    <div style="position: relative; height: 30px;">
+                        <input type="hidden" id="childtaskLeaderhid0" class="systemUsers validate[required]"/>
+                        <input type="text" name="childtaskLeader0" class="validate[required]" placeholder="输入存在的用户在动态列表中选择" id="childtaskLeader0" style="position: absolute; z-index: 2; background: transparent;" autocomplete="off">
+                        <input type="text" name="childtaskLeader0" id="childtaskLeader-list0" disabled="disabled" style="color:#ccc;position: absolute; background: transparent; z-index: 1;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>执行时段：</td>
+                <td>
+                    <input type="text" id="childstarter0" class="validate[required]" placeholder="点击选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'hidstarter\')}',maxDate:'#F{ $dp.$D(\'childender0\') || $dp.$D(\'hidender\')}'})" style="width: 140px;">
+                    <span style="color: #999;">—</span>
+                    <input type="text" id="childender0" class="validate[required]" placeholder="点击选择时间" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true,minDate:'#F{ $dp.$D(\'childstarter0\') || $dp.$D(\'hidstarter\')}',maxDate:'#F{$dp.$D(\'hidender\');}'})" style="width: 140px;">
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    配合部门：
+                </td>
+                <td>
+                    <input id="childplandepart0" type="text" maxlength="50"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+<div style="display: none" id="tasksSpilt" class="pop-box">
+    <div class="pop-txt">
+        <form id="tasksSpiltFrom">
+        <div class="childTaskList">
+        </div>
+        </form>
+        <div class="mgt14">
+            <a id="creatNewChild" class="btn-details" href="#">＋增加拆分</a>
+        </div>
+    </div>
+</div>
+<div class="pop-box" style="display: none;" id="newTask">
+    <div class="pop-txt">
+        <form id="taskeditForm">
+        <table class="t-table">
+            <tr>
+                <td >
+                    任务名称：
+                </td>
+                <td>
+                    <input id="taskName" class="validate[required]" placeholder="请输入任务名称（必填）" type="text" maxlength="50"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    总负责人：
+                </td>
+                <td>
+                    <div style="position: relative; height: 30px;">
+                        <input type="hidden" id="taskLeaderhid" class="systemUsers validate[required]"/>
+                        <input type="text" name="taskLeader" placeholder="输入存在的用户在动态列表中选择" class="validate[required]"
+                               id="taskLeader"
+                               style="position: absolute; z-index: 2; background: transparent;"/>
+                        <input type="text" name="taskLeader" id="taskLeader-list" disabled="disabled"
+                               style="color:#ccc;position: absolute; background: transparent; z-index: 1;"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    执行时段：
+                </td>
+                <td>
+                    <input type="text" id="starter" placeholder="点击选择时间" class="validate[required]"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:daysCount,isShowClear:true,readOnly:true,maxDate:'#F{$dp.$D(\'ender\');}'})"
+                           style="width: 140px;"/>
+                    <span style="color: #999;">—</span>
+                    <input type="text" id="ender" placeholder="点击选择时间" class="validate[required]"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:daysCount,isShowClear:true,readOnly:true,minDate:'#F{$dp.$D(\'starter\');}'})"
+                           style="width: 140px;"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    总用时：
+                </td>
+                <td>
+                    <input style="width: 90%;" placeholder="总用时（天），自动计算" disabled id="wasteTime"/> 天
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png" />
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav"></ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="cur-page-txt">
+            <a href="#">查看管理</a>
+            >
+            <span class="ptname"></span>
+        </div>
+
+        <div class="db-details-box">
+            <ul class="db-big-box clearfix">
+                <li class="db-top-box">
+                    <input id="TaskId" type="hidden" />
+                    <input id="Leaderhid" type="hidden" />
+                    <input id="days" type="hidden" />
+                    <input id="hidender" type="hidden" />
+                    <input id="hidstarter" type="hidden" />
+                    <p>任务编号：<span id="ptnum"></span></p>
+                    <p>任务名称：<span id="ptname" class="ptname db-tit"></span>
+                    </p>
+                    <p>总负责人：<span id="ptuser"></span></p>
+                    <p>任务时间：<span id="ptdate"></span></p>
+                    <p><a href="#" id="a_taskEdit" class="hide">修改信息</a></p>
+                </li>
+                <li>
+                    <div id="circle" class="circle"></div>
+                    <p class="db-details-txt">任务进度详情</p>
+                </li>
+            </ul>
+            <div class="childTasks table-div">
+                <table class="table-box"></table>
+                <div class="mgt15">
+                    <a class="btn-details hide" id="taskSpiltbtn">+增加任务分解</a>
+                </div>
+                <div class="btns-box">
+                    <button class="delete-task btn btn-red hide">删除任务</button>
+                    <button class="hide complete-task btn">完成任务</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/jquery.jqplot.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.pieRenderer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.jqplot/plugins/jqplot.donutRenderer.js"></script>
+<link rel="stylesheet" type="text/css" href="../../javascript/plugins/jquery.jqplot/jquery.jqplot.css"/>
+<script type="text/javascript" src="../../javascript/class/supervise.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        supervise.tasksdetail.Initialization();
+    });
+    function daysCount() {
+        var ender = $dp.$('ender');
+        var starter = $dp.$('starter');
+        if (ender.value != "" && starter.value != "") {
+            var days = Math.floor((Date.parse(ender.value) - Date.parse(starter.value)) / 1000 / 60 / 60 / 24 + 1);
+            document.getElementById("wasteTime").value = days;
+        } else {
+            if (ender.value == "") {
+                ender.click();
+            }
+            if (starter.value == "") {
+                starter.click();
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

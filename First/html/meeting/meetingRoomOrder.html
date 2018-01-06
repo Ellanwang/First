@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>预定详情－预定</title>
+    <link type="text/css" rel="stylesheet" href="../../css/base.min.css">
+    <link type="text/css" rel="stylesheet" href="../../css/main.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/css/validationEngine.jquery.css">
+</head>
+
+<body>
+<div id="qxyd" class="pop-box" style="display: none">
+    <div class="pop-txt">
+        <table class="t-table">
+            <tr>
+                <td width="18%">
+                    预定用户：
+                </td>
+                <td class="qxyd-orderUser">
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    预定时间：
+                </td>
+                <td class="qxyd-orderDate">
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    使用时间：
+                </td>
+                <td class="qxyd-orderTime">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    取消原因：
+                </td>
+                <td>
+                    <select id="qxyd_reason">
+                        <option>紧急使用会议室</option>
+                        <option>故障</option>
+                        <option>重复预定</option>
+                        <option>其他</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    其他备注：
+                </td>
+                <td>
+                    <textarea maxlength="100" id="qxyd_mark"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="qryd" class="pop-box" style="display: none">
+    <div class="pop-txt">
+        <table class="t-table t-table-n">
+            <tr>
+                <td width="20%">
+                    预定人：
+                </td>
+                <td class="qr-orderName">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    预定时间：
+                </td>
+                <td class="qr-orderDate">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    使用时间：
+                </td>
+                <td class="qr-orderTime">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    会议室编号：
+                </td>
+                <td class="qr-roomNumber">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    会议室类别：
+                </td>
+                <td class="qr-orderType">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    会议室位置：
+                </td>
+                <td class="qr-position">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    可容纳：
+                </td>
+                <td class="qr-personCount">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    会议室设备：
+                </td>
+                <td class="qr-equipName">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    主题：
+                </td>
+                <td style="word-break: break-all" class="qr-topic">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    主持人：
+                </td>
+                <td class="qr-hostName">
+
+                </td>
+            </tr>
+            <tr>
+                <td width="18%">
+                    参加人：
+                </td>
+                <td class="qr-attendList">
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="drry" class="pop-box" style="display:none">
+    <div class="pop-txt">
+        <div class="top-chioce">
+            <div class="chioce-box1">
+                <span>部门</span>
+                <select id="deptId">
+                    <option value="">不限</option>
+                </select>
+            </div>
+            <div class="chioce-box1">
+                <span>姓名</span>
+                <input type="text" placeholder="姓名" maxlength="10" id="name"/>
+            </div>
+
+            <div class="chioce-box1">
+                <button class="searchAttend btn">筛选</button>
+            </div>
+        </div>
+        <div class="table-table-box">
+            <table class="table-table">
+            </table>
+        </div>
+    </div>
+</div>
+<div id="hysyd" class="pop-box" style="display:none">
+    <form class="order-form">
+        <div class="pop-txt">
+            <table class="t-table">
+                <tr>
+                    <td width="18%">
+                        预定人：
+                    </td>
+                    <td class="orderUserName">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        预定时间：
+                    </td>
+                    <td class="orderDate">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        使用时间：
+                    </td>
+                    <td class="use-time">
+                        <input type="text" placeholder="点击选择时间" style="width:42%" id="meetingStartTime"
+                               onclick="WdatePicker({isShowClear:true,dateFmt:'HH:mm',readOnly:true,minDate:'06:00',maxDate:'#F{$dp.$D(\'meetingEndTime\',{m:-10})|| \'20:00\'}'})"/>
+                        至
+                        <input type="text" placeholder="点击选择时间" style="width:43%" id="meetingEndTime"
+                               onclick="WdatePicker({isShowClear:true,dateFmt:'HH:mm',readOnly:true,maxDate:'20:00',minDate:'#F{$dp.$D(\'meetingStartTime\',{m:10})|| \'6:00\'}'})"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        主题：
+                    </td>
+                    <td>
+                        <input type="text" class="validate[required]" maxlength="20" id="topic"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        主持人：
+                    </td>
+                    <td>
+                        <!--<input type="text" id="hostName" />-->
+                        <div style="position: relative; height: 30px;">
+                            <input type="hidden" id="hostNamehid" class="systemUsers validate[required]"/>
+                            <input type="text" name="hostName" placeholder="输入存在的用户在动态列表中选择" class="validate[required]"
+                                   id="hostName"
+                                   style="position: absolute; z-index: 2; background: transparent;"/>
+                            <input type="text" name="hostName" id="hostName-list" disabled="disabled"
+                                   style="color:#ccc;position: absolute; background: transparent; z-index: 1;"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="18%">
+                        参加人员：
+                    </td>
+                    <td class="add-person">
+                        <input type="text" placeholder="点击右侧“+导入”选择与会人员" class="validate[required]" readonly
+                               id="attendName"/>
+                        <input type="hidden" id="attendId" class="validate[required]"/>
+                        <a class="importUsers" href="#">+导入</a>
+                        <a class="clearUsers" href="#">x清除</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<div class="top-box">
+    <div class="pd10 clearfix">
+        <img class="logo" src="../../images/logo.png"/>
+        <ul class="top-right">
+            <li>
+                <a href="#">
+                    <img class="head-img" src="../../images/pic1.png" />
+                    <span class="name"></span>
+                </a>
+                <div class="personal-box hide">
+                </div>
+            </li>
+            <li>
+                <button class="btn-out">退出</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="left-box">
+    <ul class="left-nav"></ul>
+</div>
+
+<div class="right-box">
+    <div class="main">
+        <div class="cur-page-txt">
+            <a href="#">查看／预定</a>
+            >
+            <span></span>
+        </div>
+
+        <div class="top-chioce">
+            <div class="hys-txt">
+                <h2></h2>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="yd-big-box">
+            <div class="yd-box">
+                <div class="data-box clearfix">
+                    <div class="fl">
+                        <h2>2017年09月09日</h2>
+                        <div class="chioce-box">
+                            <span>日期</span>
+                            <input type="text" id="startTime" placeholder="点击选择时间"
+                                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:true,readOnly:true})"/>
+                        </div>
+                        <div class="chioce-box">
+                            <button class="search btn">查看</button>
+                        </div>
+                    </div>
+                    <div class="tips-box">
+								<span class="tip">
+									<i class="last-dy-t"></i>
+									<span>过去预定</span>
+								</span>
+                        <span class="tip">
+									<i class="have-dy"></i>
+									<span>已预定</span>
+								</span>
+                        <span class="tip">
+									<i class="dy">+预定</i>
+									<span>可预定</span>
+								</span>
+                    </div>
+                </div>
+                <!--data-box-->
+
+                <div class="time-set">
+                    <ul class="bg-white clearfix">
+                        <li class="week1">
+
+                        </li>
+                        <li class="tips-time clearfix">
+                            <p>6:00</p>
+                            <p>7:00</p>
+                            <p>8:00</p>
+                            <p>9:00</p>
+                            <p>10:00</p>
+                            <p>11:00</p>
+                            <p>12:00</p>
+                            <p>13:00</p>
+                            <p>14:00</p>
+                            <p>15:00</p>
+                            <p>16:00</p>
+                            <p>17:00</p>
+                            <p>18:00</p>
+                            <p>19:00</p>
+                        </li>
+                    </ul>
+                    <ul class="day1 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期一</p>
+                        </li>
+                        <li class="hy-set clearfix">
+                        </li>
+                    </ul>
+
+                    <ul class="day2 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期二</p>
+                        </li>
+                        <li class="hy-set clearfix"></li>
+                    </ul>
+
+                    <ul class="day3 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期三</p>
+                        </li>
+                        <li class="hy-set clearfix"></li>
+                    </ul>
+
+                    <ul class="day4 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期四</p>
+                        </li>
+                        <li class="hy-set clearfix"></li>
+                    </ul>
+
+                    <ul class="day5 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期五</p>
+                        </li>
+                        <li class="hy-set clearfix"></li>
+                    </ul>
+
+                    <ul class="day6 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期六</p>
+                        </li>
+                        <li class="hy-set clearfix"></li>
+                    </ul>
+
+                    <ul class="day0 clearfix">
+                        <li class="week">
+                            <p><span></span><br/>星期日</p>
+                        </li>
+                        <li class="hy-set clearfix">
+                        </li>
+                    </ul>
+                </div>
+                <!--time-set-->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../javascript/plugins/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/layer/layer.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/js.cookie.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine.js"></script>
+<script type="text/javascript"
+        src="../../javascript/plugins/jQuery-Validation-Engine-2.6.2-ciaoca/js/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="../../javascript/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="../../javascript/common/pagination.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/common.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/webserver.min.js"></script>
+<script type="text/javascript" src="../../javascript/class/meeting.min.js"></script>
+<script type="text/javascript" src="../../javascript/common/menulist.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        meeting.preOrder.Initialization();
+    });
+</script>
+</body>
+
+</html>
